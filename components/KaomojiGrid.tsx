@@ -91,53 +91,55 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
         </div>
       </div>
       {/* ✅ Recently Used (boxed + clear) */}
-      <section className="mb-8">
-        <div className="flex items-center justify-between mb-3 px-2">
-          <h2 className="text-xs font-black text-orange-300 uppercase tracking-[0.2em]">
-            Recently Used
-          </h2>
+      {!isSearching && (
+        <section>
+          <div className="flex items-center justify-between mb-3 px-2">
+            <h2 className="text-xs font-black text-orange-300 uppercase tracking-[0.2em]">
+              Recently Used
+            </h2>
 
-          <div className="flex items-center gap-3">
-            {recentKaomoji.length > 0 && (
-              <button
-                onClick={onClearRecent}
-                className="text-xs font-black text-stone-400 hover:text-stone-700"
-                title="Clear recent kaomoji"
-              >
-                Clear
-              </button>
-            )}
-            <span className="text-xs text-stone-400 font-semibold">
-              {recentKaomoji.length
-                ? `${recentKaomoji.length} saved`
-                : "No history yet"}
-            </span>
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-orange-100 bg-white/60 backdrop-blur-md p-5">
-          {recentKaomoji.length === 0 ? (
-            <div className="text-sm text-stone-400 font-medium">
-              Copy a kaomoji to see it here.
-            </div>
-          ) : (
-            <div className="flex flex-wrap gap-4">
-              {recentKaomoji.map((char) => (
+            <div className="flex items-center gap-3">
+              {recentKaomoji.length > 0 && (
                 <button
-                  key={`recent-${char}`}
-                  onClick={() => onCopy(char)}
-                  title="Recently used"
-                  className="px-3 py-2 rounded-2xl bg-white border border-orange-50 text-sm font-semibold
-                       hover:border-orange-300 hover:shadow-xl hover:shadow-orange-100
-                       hover:-translate-y-1 transition-all active:scale-95"
+                  onClick={onClearRecent}
+                  className="text-xs font-black text-stone-400 hover:text-stone-700"
+                  title="Clear recent kaomoji"
                 >
-                  {char}
+                  Clear
                 </button>
-              ))}
+              )}
+              <span className="text-xs text-stone-400 font-semibold">
+                {recentKaomoji.length
+                  ? `${recentKaomoji.length} saved`
+                  : "No history yet"}
+              </span>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+
+          <div className="rounded-3xl border border-orange-100 bg-white/60 backdrop-blur-md p-5">
+            {recentKaomoji.length === 0 ? (
+              <div className="text-sm text-stone-400 font-medium">
+                Copy a kaomoji to see it here.
+              </div>
+            ) : (
+              <div className="flex flex-wrap gap-4">
+                {recentKaomoji.map((char) => (
+                  <button
+                    key={`recent-${char}`}
+                    onClick={() => onCopy(char)}
+                    title="Recently used"
+                    className="px-3 py-2 rounded-2xl bg-white border border-orange-50 text-sm font-semibold
+                         hover:border-orange-300 hover:shadow-xl hover:shadow-orange-100
+                         hover:-translate-y-1 transition-all active:scale-95"
+                  >
+                    {char}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* 空结果 */}
       {isSearching && filtered.length === 0 && (

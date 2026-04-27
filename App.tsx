@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { Category, Toast as IToast } from "./types";
 import Sidebar from "./components/Sidebar";
 import EmojiGrid from "./components/EmojiGrid";
@@ -78,6 +79,11 @@ const App: React.FC = () => {
     localStorage.removeItem("recentKaomoji");
     addToast("Cleared recent kaomoji");
   }, [addToast]);
+
+  useEffect(() => {
+    setSearchQuery("");
+    setInputValue("");
+  }, [activeCategory]);
 
   // ✅ SEO：按页面动态更新 title / description
   useEffect(() => {
@@ -205,6 +211,8 @@ const App: React.FC = () => {
           <Toast key={toast.id} message={toast.message} />
         ))}
       </div>
+
+      <Analytics />
     </div>
   );
 };

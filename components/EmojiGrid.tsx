@@ -121,7 +121,7 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({
 
       {/* ✅ Recently Used (boxed + clear) */}
       {searchQuery.trim() === "" && (
-        <section className="mb-8">
+        <section>
           <div className="flex items-center justify-between mb-3 px-2">
             <h2 className="text-xs font-black text-orange-300 uppercase tracking-[0.2em]">
               Recently Used
