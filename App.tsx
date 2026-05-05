@@ -7,7 +7,7 @@ import FontStyles from "./components/FontStyles";
 import Toast from "./components/Toast";
 import KaomojiGrid from "./components/KaomojiGrid";
 import QuickPicks from "./components/QuickPicks";
-//import AISearch from "./components/AISearch";
+import CaptionLab from "./components/CaptionLab";
 
 type CopyType = "emoji" | "kaomoji" | "font";
 
@@ -149,6 +149,7 @@ const App: React.FC = () => {
             {activeCategory === Category.EMOJI && "Emoji Library"}
             {activeCategory === Category.KAOMOJI && "Cute Kaomoji"}
             {activeCategory === Category.FONTS && "Fancy Font"}
+            {activeCategory === Category.CAPTION_LAB && "Caption Lab"}
           </h1>
         </header>
 
@@ -198,9 +199,9 @@ const App: React.FC = () => {
               />
             )}
 
-            {/* {activeCategory === Category.AI_SEARCH && (
-              <AISearch onCopy={(t: string) => handleCopy(t)} />
-            )} */}
+            {activeCategory === Category.CAPTION_LAB && (
+              <CaptionLab onCopy={(t: string) => handleCopy(t)} />
+            )}
           </div>
         </section>
       </main>

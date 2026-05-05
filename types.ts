@@ -5,7 +5,7 @@ export enum Category {
   KAOMOJI = "KAOMOJI",
   FONTS = 'FONTS',
   SYMBOLS = 'SYMBOLS',
-  //AI_SEARCH = 'AI_SEARCH'
+  CAPTION_LAB = 'CAPTION_LAB',
 }
 
 export interface EmojiItem {

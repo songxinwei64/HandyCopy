@@ -20,8 +20,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     { id: Category.EMOJI, label: "Emoji Library", icon: "fa-face-smile" },
     { id: Category.KAOMOJI, label: "Cute Kaomoji", icon: "fa-heart" },
     { id: Category.FONTS, label: "Fancy Fonts", icon: "fa-font" },
-    //magic search暂时不需要
-    //{ id: Category.AI_SEARCH, label: "Magic Search", icon: "fa-wand-magic-sparkles" },
+    { id: Category.CAPTION_LAB, label: "Caption Lab", icon: "fa-pen-nib" },
   ];
 
   return (
