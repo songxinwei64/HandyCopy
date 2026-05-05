@@ -1,5 +1,12 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { buildCaptionPrompt } from '../utils/captionPrompt';
+
+const buildCaptionPrompt = (topic: string): string =>
+  `Generate 5 short, creative SNS captions for: "${topic}".
+Return ONLY a valid JSON object in this exact format: {"captions": ["...", "...", "...", "...", "..."]}
+Requirements:
+- Each caption: 1-2 lines max, no explanations, no numbering
+- Style: cute, aesthetic, casual, trendy — suitable for Instagram / TikTok / Threads
+- Can include relevant emojis`;
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
