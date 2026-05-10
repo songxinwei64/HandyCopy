@@ -7,6 +7,6 @@ export const transformByStyle = (
   const map = CHAR_MAP[style];
   return text
     .split('')
-    .map(char => map[char] || char)
+    .map(char => (map as Record<string, string>)[char] || char)
     .join('');
 };
