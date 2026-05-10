@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(rm \"D:/IT PROJECT/HandyCopy/utils/captionPrompt.ts\")"
+      "Bash(rm \"D:/IT PROJECT/HandyCopy/utils/captionPrompt.ts\")",
+      "Bash(cat \"C:/Users/SONGXINWEI/AppData/Local/Temp/claude/d--IT-PROJECT-HandyCopy/2f32fae3-73ad-48e0-9f10-cbd46047d558/tasks/bs3j7bdv8.output\")",
+      "Read(//c/Users/SONGXINWEI/AppData/Local/Temp/claude/d--IT-PROJECT-HandyCopy/2f32fae3-73ad-48e0-9f10-cbd46047d558/tasks/**)",
+      "Bash(vercel --version)"
     ],
     "additionalDirectories": [
       "D:\\IT PROJECT\\HandyCopy\\utils"

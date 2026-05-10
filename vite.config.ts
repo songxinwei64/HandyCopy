@@ -27,12 +27,17 @@ function captionApiPlugin(apiKey: string): Plugin {
             }
 
             const Anthropic = (await import('@anthropic-ai/sdk')).default;
-            const { buildCaptionPrompt } = await import('./utils/captionPrompt');
             const client = new Anthropic({ apiKey });
+            const prompt = `Generate 5 short, creative SNS captions for: "${topic.trim()}".
+Return ONLY a valid JSON object in this exact format: {"captions": ["...", "...", "...", "...", "..."]}
+Requirements:
+- Each caption: 1-2 lines max, no explanations, no numbering
+- Style: cute, aesthetic, casual, trendy — suitable for Instagram / TikTok / Threads
+- Can include relevant emojis`;
             const message = await client.messages.create({
               model: 'claude-haiku-4-5',
               max_tokens: 1024,
-              messages: [{ role: 'user', content: buildCaptionPrompt(topic.trim()) }],
+              messages: [{ role: 'user', content: prompt }],
             });
 
             const textBlock = message.content.find((b: any) => b.type === 'text') as any;
