@@ -1,6 +1,5 @@
 
 export enum Category {
-  QUICK_PICKS = "quick",
   EMOJI = 'EMOJI',
   KAOMOJI = "KAOMOJI",
   FONTS = 'FONTS',

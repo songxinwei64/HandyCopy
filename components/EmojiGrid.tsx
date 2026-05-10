@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+﻿import React, { useMemo } from "react";
 //import { EMOJI_DATA } from "../data/emoji/emoji.basic";
 import { EMOJI_DATA } from "../data/emoji/emoji.full";
 import { EMOJI_KEYWORDS_MAP } from "../data/emoji/emojiKeywordMap";
@@ -58,11 +58,11 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({
   return (
     <div className="space-y-12 pt-6 sm:pt-0">
       {/* 🔍 Search Area */}
-      <div className="sticky top-0 z-20 bg-[#fffaf5] pt-2 pb-4">
+      <div className="sticky top-0 z-20 bg-[#fdf5f9] pt-2 pb-4">
         {/* 搜索状态提示 + 返回 */}
         {isSearching && (
           <div
-            className="mb-2 flex items-center gap-2 text-sm text-orange-500 cursor-pointer"
+            className="mb-2 flex items-center gap-2 text-sm text-pink-500 cursor-pointer"
             onClick={() => {
               setInputValue("");
               setSearchQuery("");
@@ -85,12 +85,12 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({
               }
             }}
             placeholder="Search emojis..."
-            className="flex-1 h-12 px-4 rounded-2xl border border-orange-200 bg-white focus:outline-none focus:ring-4 focus:ring-orange-300"
+            className="flex-1 h-12 px-4 rounded-2xl border border-pink-200 bg-white focus:outline-none focus:ring-4 focus:ring-pink-300"
           />
 
           <button
             onClick={onSearch}
-            className="flex items-center justify-center w-12 h-12 rounded-2xl border border-orange-300 text-orange-400 bg-white hover:bg-orange-50 transition"
+            className="flex items-center justify-center w-12 h-12 rounded-2xl border border-pink-300 text-pink-400 bg-white hover:bg-pink-50 transition"
             aria-label="Search"
           >
             <svg
@@ -123,7 +123,7 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({
       {searchQuery.trim() === "" && (
         <section>
           <div className="flex items-center justify-between mb-3 px-2">
-            <h2 className="text-xs font-black text-orange-300 uppercase tracking-[0.2em]">
+            <h2 className="text-xs font-black text-pink-300 uppercase tracking-[0.2em]">
               Recently Used
             </h2>
 
@@ -145,7 +145,7 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({
             </div>
           </div>
 
-          <div className="rounded-3xl border border-orange-100 bg-white/60 backdrop-blur-md p-5">
+          <div className="rounded-3xl border border-pink-100 bg-white/60 backdrop-blur-md p-5">
             {recentEmojis.length === 0 ? (
               <div className="text-sm text-stone-400 font-medium">
                 Copy an emoji to see it here.
@@ -157,10 +157,10 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({
                     key={`recent-${char}`}
                     onClick={() => onCopy(char)}
                     title="Recently used"
-                    className="group relative aspect-square bg-white border border-orange-50 rounded-2xl flex items-center justify-center text-3xl hover:border-orange-300 hover:shadow-xl hover:shadow-orange-100 hover:-translate-y-1 transition-all active:scale-95 w-12"
+                    className="group relative aspect-square bg-white border border-pink-50 rounded-2xl flex items-center justify-center text-3xl hover:border-pink-300 hover:shadow-xl hover:shadow-pink-100 hover:-translate-y-1 transition-all active:scale-95 w-12"
                   >
                     {char}
-                    <div className="absolute inset-0 bg-orange-500 opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity" />
+                    <div className="absolute inset-0 bg-pink-500 opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity" />
                   </button>
                 ))}
               </div>
@@ -173,7 +173,7 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({
       {(Object.entries(categories) as [string, EmojiItem[]][]).map(
         ([category, items]) => (
           <div key={category} className="space-y-6">
-            <h2 className="text-xs font-black text-orange-300 uppercase tracking-[0.2em] ml-2">
+            <h2 className="text-xs font-black text-pink-300 uppercase tracking-[0.2em] ml-2">
               {category}
             </h2>
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
@@ -182,10 +182,10 @@ const EmojiGrid: React.FC<EmojiGridProps> = ({
                   key={`${emoji.category}-${emoji.name}`}
                   onClick={() => onCopy(emoji.char)}
                   title={emoji.name}
-                  className="group relative aspect-square bg-white border border-orange-50 rounded-2xl flex items-center justify-center text-3xl hover:border-orange-300 hover:shadow-xl hover:shadow-orange-100 hover:-translate-y-1 transition-all active:scale-95"
+                  className="group relative aspect-square bg-white border border-pink-50 rounded-2xl flex items-center justify-center text-3xl hover:border-pink-300 hover:shadow-xl hover:shadow-pink-100 hover:-translate-y-1 transition-all active:scale-95"
                 >
                   {emoji.char}
-                  <div className="absolute inset-0 bg-orange-500 opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity" />
+                  <div className="absolute inset-0 bg-pink-500 opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity" />
                 </button>
               ))}
             </div>

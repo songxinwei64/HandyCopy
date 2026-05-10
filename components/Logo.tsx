@@ -7,114 +7,62 @@ interface LogoProps {
 
 const Logo: React.FC<LogoProps> = ({ className = "", showText = false }) => {
   return (
-    <div
-      className={`flex items-center gap-3 group cursor-pointer select-none ${className}`}
-    >
-      {/* Icon */}
-      <div className="relative w-14 h-14 flex items-center justify-center shrink-0">
-        {/* Soft glow on hover */}
-        <div className="absolute inset-0 bg-amber-400 opacity-0 group-hover:opacity-20 blur-xl rounded-full transition-all duration-300" />
+    <div className={`flex items-center gap-2.5 select-none ${className}`}>
+      <svg
+        viewBox="0 0 108 105"
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-11 h-11 shrink-0"
+        overflow="visible"
+      >
+        <defs>
+          <linearGradient id="strokeGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#e8506e"/>
+            <stop offset="100%" stopColor="#f9a8c9"/>
+          </linearGradient>
+        </defs>
 
-        <svg
-          viewBox="0 0 100 100"
-          className="w-full h-full relative z-10 transition-transform duration-300 group-hover:scale-110"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Light Rays */}
-          <g
-            className="stroke-stone-800 group-hover:stroke-orange-500 transition-colors"
-            strokeWidth="5"
-            strokeLinecap="round"
-            opacity="0.5"
-          >
-            <line x1="50" y1="6" x2="50" y2="14" />
-            <line x1="78" y1="18" x2="72" y2="24" />
-            <line x1="94" y1="44" x2="86" y2="46" />
-            <line x1="22" y1="18" x2="28" y2="24" />
-            <line x1="6" y1="44" x2="14" y2="46" />
-          </g>
+        {/* Back card — rotated */}
+        <rect
+          x="3" y="10"
+          width="58" height="58"
+          rx="16"
+          fill="#f4a0b5"
+          transform="rotate(-9, 32, 39)"
+        />
 
-          {/* Bulb */}
-          <path
-            d="
-              M50 18
-              C34 18, 26 30, 26 42
-              C26 54, 36 58, 38 66
-              L62 66
-              C64 58, 74 54, 74 42
-              C74 30, 66 18, 50 18 Z
-            "
-            className="
-              fill-white
-              stroke-stone-800
-              group-hover:fill-amber-50
-              group-hover:stroke-orange-500
-              transition-all
-            "
-            strokeWidth="4"
-            strokeLinejoin="round"
-          />
+        {/* Front card — outlined */}
+        <rect
+          x="22" y="22"
+          width="64" height="64"
+          rx="18"
+          fill="white"
+          stroke="url(#strokeGrad)"
+          strokeWidth="5"
+        />
 
-          {/* Face */}
-          <circle
-            cx="42"
-            cy="40"
-            r="3"
-            className="fill-stone-800 group-hover:fill-orange-600 transition-colors"
-          />
-          <circle
-            cx="58"
-            cy="40"
-            r="3"
-            className="fill-stone-800 group-hover:fill-orange-600 transition-colors"
-          />
-          <path
-            d="M44 48 Q50 52, 56 48"
-            className="stroke-stone-800 group-hover:stroke-orange-600 transition-colors"
-            strokeWidth="3"
-            strokeLinecap="round"
-            fill="none"
-          />
-          <circle
-            cx="36"
-            cy="44"
-            r="4"
-            className="fill-stone-200 group-hover:fill-orange-200 transition-colors"
-          />
-          <circle
-            cx="64"
-            cy="44"
-            r="4"
-            className="fill-stone-200 group-hover:fill-orange-200 transition-colors"
-          />
+        {/* H — left bar */}
+        <rect x="34" y="34" width="9.5" height="34" rx="4.75" fill="#e8506e"/>
+        {/* H — right bar */}
+        <rect x="56.5" y="34" width="9.5" height="34" rx="4.75" fill="#e8506e"/>
+        {/* H — crossbar */}
+        <rect x="34" y="46" width="32" height="9" rx="4.5" fill="#e8506e"/>
 
-          {/* Screw */}
-          <line
-            x1="40"
-            y1="72"
-            x2="60"
-            y2="72"
-            strokeWidth="4"
-            className="stroke-stone-800 group-hover:stroke-orange-600 transition-colors"
-          />
-          <line
-            x1="42"
-            y1="78"
-            x2="58"
-            y2="78"
-            strokeWidth="4"
-            className="stroke-stone-800 group-hover:stroke-orange-600 transition-colors"
-          />
-        </svg>
-      </div>
+        {/* Top-right shine dashes */}
+        <line x1="87" y1="19" x2="84" y2="14" stroke="#e8506e" strokeWidth="3.5" strokeLinecap="round"/>
+        <line x1="91" y1="25" x2="96" y2="23" stroke="#e8506e" strokeWidth="3.5" strokeLinecap="round"/>
+        <line x1="90" y1="20" x2="94" y2="16" stroke="#e8506e" strokeWidth="3.5" strokeLinecap="round"/>
 
-      {/* Text */}
+        {/* Bottom-right 4-pointed sparkle */}
+        <path
+          d="M83,78 L85,84 L91,86 L85,88 L83,94 L81,88 L75,86 L81,84 Z"
+          fill="#e8506e"
+        />
+      </svg>
+
       {showText && (
-        <span className="font-black text-2xl tracking-tight text-stone-800 leading-none">
-          Handy
-          <span className="text-orange-500 group-hover:text-orange-600 transition-colors ml-0.5">
-            Copy
-          </span>
+        <span className="font-black text-xl tracking-tight leading-none">
+          <span className="text-stone-800">Handy</span>
+          <span className="text-[#e8506e]">Copy</span>
         </span>
       )}
     </div>

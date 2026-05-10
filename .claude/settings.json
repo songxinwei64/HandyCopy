@@ -4,7 +4,9 @@
       "Bash(rm \"D:/IT PROJECT/HandyCopy/utils/captionPrompt.ts\")",
       "Bash(cat \"C:/Users/SONGXINWEI/AppData/Local/Temp/claude/d--IT-PROJECT-HandyCopy/2f32fae3-73ad-48e0-9f10-cbd46047d558/tasks/bs3j7bdv8.output\")",
       "Read(//c/Users/SONGXINWEI/AppData/Local/Temp/claude/d--IT-PROJECT-HandyCopy/2f32fae3-73ad-48e0-9f10-cbd46047d558/tasks/**)",
-      "Bash(vercel --version)"
+      "Bash(vercel --version)",
+      "Bash(rm \"D:/IT PROJECT/HandyCopy/components/QuickPicks.tsx\")",
+      "Bash(rm \"D:/IT PROJECT/HandyCopy/data/quickPicks.ts\")"
     ],
     "additionalDirectories": [
       "D:\\IT PROJECT\\HandyCopy\\utils"

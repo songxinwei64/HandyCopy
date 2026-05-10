@@ -1,24 +1,32 @@
-/* ===== 基础 reset ===== */
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background-color: #fffcf7;
-  font-family: 'Inter', sans-serif;
+  height: 100%;
+  overflow: hidden;
+  background-color: #fdf5f9;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* ❗不要在 root 上用 flex */
 #root {
-  min-height: 100vh;
+  height: 100%;
 }
 
-/* 防止 flex / grid 子元素把布局撑爆 */
 * {
   box-sizing: border-box;
   min-width: 0;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #fce7f3;
+  border-radius: 99px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #f9a8d4;
 }

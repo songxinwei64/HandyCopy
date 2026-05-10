@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+﻿import React, { useMemo, useState } from "react";
 import { KAOMOJI_DATA } from "../data/kaomoji/kaomoji";
 
 interface KaomojiGridProps {
@@ -42,10 +42,10 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
   return (
     <div className="space-y-12 pt-6 sm:pt-0">
       {/* 🔍 搜索栏 */}
-      <div className="sticky top-0 z-20 bg-[#fffaf5] pt-2 pb-4">
+      <div className="sticky top-0 z-20 bg-[#fdf5f9] pt-2 pb-4">
         {isSearching && (
           <div
-            className="mb-2 flex items-center gap-2 text-sm text-orange-500 cursor-pointer"
+            className="mb-2 flex items-center gap-2 text-sm text-pink-500 cursor-pointer"
             onClick={() => {
               setInputValue("");
               setSearchQuery("");
@@ -62,14 +62,14 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && setSearchQuery(inputValue)}
             placeholder="Search kaomoji..."
-            className="flex-1 h-12 px-4 rounded-2xl border border-orange-200 bg-white focus:outline-none focus:ring-4 focus:ring-orange-300"
+            className="flex-1 h-12 px-4 rounded-2xl border border-pink-200 bg-white focus:outline-none focus:ring-4 focus:ring-pink-300"
           />
 
           <button
             onClick={() => setSearchQuery(inputValue)}
-            className="group relative w-12 h-12 rounded-2xl border border-orange-200 bg-white
+            className="group relative w-12 h-12 rounded-2xl border border-pink-200 bg-white
                        flex items-center justify-center
-                       hover:border-orange-300 hover:shadow-xl hover:shadow-orange-100
+                       hover:border-pink-300 hover:shadow-xl hover:shadow-pink-100
                        transition-all active:scale-95"
             aria-label="Search"
           >
@@ -79,7 +79,7 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-5 h-5 text-orange-400 group-hover:text-orange-500 transition"
+              className="w-5 h-5 text-pink-400 group-hover:text-pink-500 transition"
             >
               <path
                 strokeLinecap="round"
@@ -94,7 +94,7 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
       {!isSearching && (
         <section>
           <div className="flex items-center justify-between mb-3 px-2">
-            <h2 className="text-xs font-black text-orange-300 uppercase tracking-[0.2em]">
+            <h2 className="text-xs font-black text-pink-300 uppercase tracking-[0.2em]">
               Recently Used
             </h2>
 
@@ -116,7 +116,7 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
             </div>
           </div>
 
-          <div className="rounded-3xl border border-orange-100 bg-white/60 backdrop-blur-md p-5">
+          <div className="rounded-3xl border border-pink-100 bg-white/60 backdrop-blur-md p-5">
             {recentKaomoji.length === 0 ? (
               <div className="text-sm text-stone-400 font-medium">
                 Copy a kaomoji to see it here.
@@ -128,8 +128,8 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
                     key={`recent-${char}`}
                     onClick={() => onCopy(char)}
                     title="Recently used"
-                    className="px-3 py-2 rounded-2xl bg-white border border-orange-50 text-sm font-semibold
-                         hover:border-orange-300 hover:shadow-xl hover:shadow-orange-100
+                    className="px-3 py-2 rounded-2xl bg-white border border-pink-50 text-sm font-semibold
+                         hover:border-pink-300 hover:shadow-xl hover:shadow-pink-100
                          hover:-translate-y-1 transition-all active:scale-95"
                   >
                     {char}
@@ -154,7 +154,7 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
 
         return (
           <div key={group} className="space-y-6">
-            <h2 className="text-xs font-black text-orange-300 uppercase tracking-[0.2em] ml-2">
+            <h2 className="text-xs font-black text-pink-300 uppercase tracking-[0.2em] ml-2">
               {group}
             </h2>
 
@@ -163,7 +163,7 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
                 <button
                   key={item.text}
                   onClick={() => onCopy(item.text)}
-                  className="group bg-white border border-orange-50 rounded-2xl p-3 hover:border-orange-300 hover:shadow-xl transition"
+                  className="group bg-white border border-pink-50 rounded-2xl p-3 hover:border-pink-300 hover:shadow-xl transition"
                 >
                   {item.text}
                 </button>
