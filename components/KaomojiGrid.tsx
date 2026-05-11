@@ -1,4 +1,4 @@
-﻿import React, { useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { KAOMOJI_DATA } from "../data/kaomoji/kaomoji";
 
 interface KaomojiGridProps {
@@ -7,11 +7,7 @@ interface KaomojiGridProps {
   recentKaomoji: string[];
 }
 
-const KaomojiGrid: React.FC<KaomojiGridProps> = ({
-  onCopy,
-  onClearRecent,
-  recentKaomoji,
-}) => {
+const KaomojiGrid: React.FC<KaomojiGridProps> = ({ onCopy, onClearRecent, recentKaomoji }) => {
   const [inputValue, setInputValue] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -20,14 +16,11 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
   const filtered = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
     if (!q) return KAOMOJI_DATA;
-
-    return KAOMOJI_DATA.filter((item) => {
-      return (
-        item.text.includes(q) ||
-        item.tags.some((t) => t.toLowerCase().includes(q)) ||
-        item.group.toLowerCase().includes(q)
-      );
-    });
+    return KAOMOJI_DATA.filter((item) =>
+      item.text.includes(q) ||
+      item.tags.some((t) => t.toLowerCase().includes(q)) ||
+      item.group.toLowerCase().includes(q)
+    );
   }, [searchQuery]);
 
   const grouped = useMemo(() => {
@@ -40,98 +33,85 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
   }, [filtered]);
 
   return (
-    <div className="space-y-12 pt-6 sm:pt-0">
-      {/* 🔍 搜索栏 */}
-      <div className="sticky top-0 z-20 bg-[#fdf5f9] pt-2 pb-4">
+    <div className="space-y-10 pt-6 sm:pt-0">
+
+      {/* Search bar */}
+      <div className="sticky top-0 z-20 pt-2 pb-4" style={{ background: '#fff7fb' }}>
         {isSearching && (
           <div
-            className="mb-2 flex items-center gap-2 text-sm text-pink-500 cursor-pointer"
-            onClick={() => {
-              setInputValue("");
-              setSearchQuery("");
-            }}
+            className="mb-2 flex items-center gap-2 text-sm cursor-pointer font-semibold"
+            style={{ color: '#ec3d97' }}
+            onClick={() => { setInputValue(""); setSearchQuery(""); }}
           >
-            <span className="text-lg">←</span>
+            <span>←</span>
             <span>Back to all kaomoji</span>
           </div>
         )}
-
-        <div className="relative max-w-xl mx-auto flex gap-2">
+        <div className="max-w-xl mx-auto flex gap-2">
           <input
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && setSearchQuery(inputValue)}
             placeholder="Search kaomoji..."
-            className="flex-1 h-12 px-4 rounded-2xl border border-pink-200 bg-white focus:outline-none focus:ring-4 focus:ring-pink-300"
+            className="flex-1 h-12 px-4 text-sm bg-white focus:outline-none transition-all"
+            style={{ border: '2px solid #ffb8d8', borderRadius: '16px', color: '#2b1b25' }}
+            onFocus={e => { (e.target as HTMLInputElement).style.boxShadow = '0 0 0 3px rgba(236,61,151,0.12)'; }}
+            onBlur={e => { (e.target as HTMLInputElement).style.boxShadow = ''; }}
           />
-
           <button
             onClick={() => setSearchQuery(inputValue)}
-            className="group relative w-12 h-12 rounded-2xl border border-pink-200 bg-white
-                       flex items-center justify-center
-                       hover:border-pink-300 hover:shadow-xl hover:shadow-pink-100
-                       transition-all active:scale-95"
+            className="key-btn w-12 h-12 flex items-center justify-center"
             aria-label="Search"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-5 h-5 text-pink-400 group-hover:text-pink-500 transition"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-4.35-4.35m1.1-5.15a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="#ec3d97" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35m1.1-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
         </div>
       </div>
-      {/* ✅ Recently Used (boxed + clear) */}
+
+      {/* Recently Used */}
       {!isSearching && (
         <section>
-          <div className="flex items-center justify-between mb-3 px-2">
-            <h2 className="text-xs font-black text-pink-300 uppercase tracking-[0.2em]">
+          <div className="flex items-center justify-between mb-3 px-1">
+            <h2 className="text-xs font-black uppercase tracking-[0.2em]" style={{ color: '#ec3d97' }}>
               Recently Used
             </h2>
-
             <div className="flex items-center gap-3">
               {recentKaomoji.length > 0 && (
                 <button
                   onClick={onClearRecent}
-                  className="text-xs font-black text-stone-400 hover:text-stone-700"
-                  title="Clear recent kaomoji"
+                  className="text-xs font-bold transition-colors"
+                  style={{ color: '#9b7f8f' }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.color = '#2b1b25'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.color = '#9b7f8f'; }}
                 >
                   Clear
                 </button>
               )}
-              <span className="text-xs text-stone-400 font-semibold">
-                {recentKaomoji.length
-                  ? `${recentKaomoji.length} saved`
-                  : "No history yet"}
+              <span className="text-xs font-semibold" style={{ color: '#9b7f8f' }}>
+                {recentKaomoji.length ? `${recentKaomoji.length} saved` : "No history yet"}
               </span>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-pink-100 bg-white/60 backdrop-blur-md p-5">
+          <div
+            className="p-4"
+            style={{
+              background: 'white',
+              border: '1.5px solid #ffb8d8',
+              borderRadius: '20px',
+              boxShadow: '0 4px 0 #ffe0f0',
+            }}
+          >
             {recentKaomoji.length === 0 ? (
-              <div className="text-sm text-stone-400 font-medium">
+              <p className="text-sm font-medium" style={{ color: '#9b7f8f' }}>
                 Copy a kaomoji to see it here.
-              </div>
+              </p>
             ) : (
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-2">
                 {recentKaomoji.map((char) => (
-                  <button
-                    key={`recent-${char}`}
-                    onClick={() => onCopy(char)}
-                    title="Recently used"
-                    className="px-3 py-2 rounded-2xl bg-white border border-pink-50 text-sm font-semibold
-                         hover:border-pink-300 hover:shadow-xl hover:shadow-pink-100
-                         hover:-translate-y-1 transition-all active:scale-95"
-                  >
+                  <button key={`recent-${char}`} onClick={() => onCopy(char)} className="key-btn px-3 py-1.5 text-sm font-semibold" style={{ color: '#2b1b25' }}>
                     {char}
                   </button>
                 ))}
@@ -141,29 +121,28 @@ const KaomojiGrid: React.FC<KaomojiGridProps> = ({
         </section>
       )}
 
-      {/* 空结果 */}
+      {/* No results */}
       {isSearching && filtered.length === 0 && (
-        <div className="text-center py-20 text-stone-300">
-          <p className="text-lg">No kaomoji found</p>
+        <div className="text-center py-20">
+          <p className="text-base font-semibold" style={{ color: '#9b7f8f' }}>No kaomoji found</p>
         </div>
       )}
 
-      {/* 分组展示 */}
+      {/* Grouped kaomoji */}
       {Object.entries(grouped).map(([group, list]) => {
         const items = list as typeof KAOMOJI_DATA;
-
         return (
-          <div key={group} className="space-y-6">
-            <h2 className="text-xs font-black text-pink-300 uppercase tracking-[0.2em] ml-2">
+          <div key={group} className="space-y-4">
+            <h2 className="text-xs font-black uppercase tracking-[0.2em] px-1" style={{ color: '#ec3d97' }}>
               {group}
             </h2>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
               {items.map((item) => (
                 <button
                   key={item.text}
                   onClick={() => onCopy(item.text)}
-                  className="group bg-white border border-pink-50 rounded-2xl p-3 hover:border-pink-300 hover:shadow-xl transition"
+                  className="key-btn px-2.5 py-2 text-sm font-medium text-center"
+                  style={{ color: '#2b1b25' }}
                 >
                   {item.text}
                 </button>

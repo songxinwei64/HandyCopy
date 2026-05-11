@@ -6,7 +6,9 @@
       "Read(//c/Users/SONGXINWEI/AppData/Local/Temp/claude/d--IT-PROJECT-HandyCopy/2f32fae3-73ad-48e0-9f10-cbd46047d558/tasks/**)",
       "Bash(vercel --version)",
       "Bash(rm \"D:/IT PROJECT/HandyCopy/components/QuickPicks.tsx\")",
-      "Bash(rm \"D:/IT PROJECT/HandyCopy/data/quickPicks.ts\")"
+      "Bash(rm \"D:/IT PROJECT/HandyCopy/data/quickPicks.ts\")",
+      "Bash(node -e \"const data = require\\('./data/emoji/emoji.full.ts'\\); \")",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "additionalDirectories": [
       "D:\\IT PROJECT\\HandyCopy\\utils"

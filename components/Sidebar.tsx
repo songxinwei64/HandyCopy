@@ -9,35 +9,39 @@ interface SidebarProps {
 
 const navItems = [
   { id: Category.CAPTION_LAB, label: "Caption Lab", icon: "fa-pen-nib" },
-  { id: Category.EMOJI,       label: "Emoji",        icon: "fa-face-smile" },
-  { id: Category.KAOMOJI,     label: "Kaomoji",      icon: "fa-heart" },
-  { id: Category.FONTS,       label: "Fancy Fonts",  icon: "fa-font" },
+  { id: Category.EMOJI,        label: "Emoji",        icon: "fa-face-smile" },
+  { id: Category.KAOMOJI,      label: "Kaomoji",      icon: "fa-heart" },
+  { id: Category.FONTS,        label: "Fancy Fonts",  icon: "fa-font" },
 ];
 
 const Sidebar: React.FC<SidebarProps> = ({ activeCategory, setActiveCategory }) => {
   return (
-    <aside className="w-20 md:w-60 bg-white border-r border-pink-100 flex flex-col shrink-0">
+    <aside
+      className="w-20 md:w-64 flex flex-col shrink-0 bg-white"
+      style={{ borderRight: '2px solid #ffb8d8' }}
+    >
       {/* Logo */}
-      <div className="h-20 flex items-center px-4 md:px-5 shrink-0 border-b border-pink-50">
+      <div
+        className="h-20 flex items-center px-4 md:px-5 shrink-0"
+        style={{ borderBottom: '1.5px solid #ffe0f0' }}
+      >
         <Logo showText={true} className="md:mx-0 mx-auto" />
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 p-3 space-y-1 pt-4">
+      <nav className="flex-1 p-3 space-y-3 pt-5">
         {navItems.map((item) => {
           const active = activeCategory === item.id;
           return (
             <button
               key={item.id}
               onClick={() => setActiveCategory(item.id)}
-              className={`w-full flex flex-col md:flex-row items-center gap-1 md:gap-3 px-3 py-3 rounded-2xl transition-all duration-150 ${
-                active
-                  ? "bg-pink-500 text-white shadow-lg shadow-pink-200"
-                  : "text-stone-400 hover:bg-pink-50 hover:text-pink-500"
+              className={`w-full flex flex-col md:flex-row items-center gap-1 md:gap-3 px-2 md:px-4 py-3 select-none ${
+                active ? 'retro-btn-active' : 'retro-btn-inactive'
               }`}
             >
-              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-all ${
-                active ? "bg-white/20" : ""
+              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${
+                active ? 'bg-white/20' : ''
               }`}>
                 <i className={`fas ${item.icon} text-base`} />
               </div>
@@ -49,11 +53,14 @@ const Sidebar: React.FC<SidebarProps> = ({ activeCategory, setActiveCategory }) 
         })}
       </nav>
 
-      {/* Footer */}
+      {/* Footer hint */}
       <div className="p-4 hidden md:block">
-        <div className="rounded-2xl bg-pink-50 border border-pink-100 px-4 py-3 flex items-center gap-3">
-          <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse shrink-0" />
-          <p className="text-[11px] text-pink-400 font-semibold leading-tight">
+        <div
+          className="rounded-2xl px-4 py-3 flex items-center gap-3"
+          style={{ background: '#fff0f8', border: '1.5px solid #ffb8d8' }}
+        >
+          <div className="w-2 h-2 rounded-full animate-pulse shrink-0" style={{ background: '#ec3d97' }} />
+          <p className="text-[11px] font-semibold leading-tight" style={{ color: '#ec3d97' }}>
             Copy anything in one click
           </p>
         </div>

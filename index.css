@@ -4,8 +4,9 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #fdf5f9;
+  background-color: #fff7fb;
   font-family: 'Inter', system-ui, sans-serif;
+  color: #2b1b25;
 }
 
 #root {
@@ -24,9 +25,55 @@ html, body {
   background: transparent;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #fce7f3;
+  background: #ffb8d8;
   border-radius: 99px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #f9a8d4;
+  background: #ec3d97;
+}
+
+.retro-btn-active {
+  background: #ec3d97;
+  color: white;
+  border: 2px solid #2b1b25;
+  box-shadow: 0 5px 0 #b61762;
+  border-radius: 16px;
+  transition: all 0.1s ease;
+}
+
+.retro-btn-inactive {
+  background: #fff7fb;
+  color: #9b7f8f;
+  border: 1.5px solid #f4b8d5;
+  border-radius: 14px;
+  transition: all 0.15s ease;
+}
+
+.retro-btn-inactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 #f4b8d5;
+  border-color: #ffb8d8;
+  color: #ec3d97;
+}
+
+.key-btn {
+  background: white;
+  border: 1.5px solid #ffb8d8;
+  box-shadow: 0 3px 0 #f4b8d5;
+  border-radius: 12px;
+  transition: all 0.12s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.key-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 #f4b8d5, 0 8px 16px rgba(236,61,151,0.12);
+  border-color: #ec3d97;
+  background: #fff0f8;
+}
+
+.key-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #f4b8d5;
 }

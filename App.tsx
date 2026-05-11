@@ -102,25 +102,41 @@ const App: React.FC = () => {
     if (canonical) canonical.href = "https://handycopy.app/";
   }, [activeCategory]);
 
+  const pageHeaders: Record<string, { title: string; sub: string }> = {
+    [Category.EMOJI]:   { title: "Emoji Library",  sub: "Copy your favorite emojis in one click." },
+    [Category.KAOMOJI]: { title: "Cute Kaomoji",   sub: "Tiny expressions for your messages." },
+    [Category.FONTS]:   { title: "Fancy Fonts",    sub: "Turn plain text into stylish text." },
+  };
+
   return (
-    <div className="flex h-screen overflow-hidden bg-[#fdf5f9] text-stone-800">
+    <div className="flex h-screen overflow-hidden" style={{ background: '#fff7fb', color: '#2b1b25' }}>
       <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
 
       <main className="flex-1 flex flex-col min-w-0">
         {activeCategory !== Category.CAPTION_LAB && (
-          <header className="h-20 border-b border-pink-100 bg-white/60 backdrop-blur-md flex items-center px-8 shrink-0">
-            <h1 className="text-2xl font-black text-stone-800 tracking-tight">
-              {activeCategory === Category.EMOJI && "Emoji Library"}
-              {activeCategory === Category.KAOMOJI && "Cute Kaomoji"}
-              {activeCategory === Category.FONTS && "Fancy Font"}
-            </h1>
+          <header
+            className="shrink-0 flex items-center px-8"
+            style={{
+              height: '76px',
+              background: 'white',
+              borderBottom: '2px solid #ffb8d8',
+            }}
+          >
+            <div>
+              <h1 className="text-xl font-black leading-tight" style={{ color: '#2b1b25' }}>
+                {pageHeaders[activeCategory]?.title}
+              </h1>
+              <p className="text-xs font-medium mt-0.5" style={{ color: '#9b7f8f' }}>
+                {pageHeaders[activeCategory]?.sub}
+              </p>
+            </div>
           </header>
         )}
 
         {activeCategory === Category.CAPTION_LAB ? (
           <CaptionLab onCopy={(t: string) => handleCopy(t)} />
         ) : (
-          <section className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar">
+          <section className="flex-1 overflow-y-auto p-6 md:p-10 custom-scrollbar" style={{ background: '#fff7fb' }}>
             <div className="max-w-7xl mx-auto">
               {activeCategory === Category.EMOJI && (
                 <EmojiGrid
